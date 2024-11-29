@@ -262,12 +262,12 @@ function eigvecs_to_arrays(::Type{Matrix{T}}, eps::SlepcEPS, ivecs=1:neigs(eps),
 
         # Real part
         array, array_ref = getArray(vecr)
-        mat_r[:, icol] .= array
+        mat_r[:, icol] .= T.(real.(array))
         restoreArray(vecr, array_ref)
 
         # Imag part
         array, array_ref = getArray(veci)
-        mat_i[:, icol] .= array
+        mat_i[:, icol] .= T.(imag.(array))
         restoreArray(veci, array_ref)
     end
 
